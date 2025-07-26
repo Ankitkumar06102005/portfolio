@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo">Ankit.kumar</a> <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-icons">
+                <i class="fas fa-code"></i> <i class="fas fa-user"></i> <i class="fas fa-laptop-code"></i> </div>
+            <h1>Welcome To My <br> <span>Portfolio Website</span></h1>
+            <p>A little about me...</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+        <div class="hero-image-placeholder">
+            </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <p>Transforming ideas into digital experiences</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Hello, I'm <br> Ankit Kumar</h3> <p>
+                    Passionate about Application Software Engineering, I delve into frontend development, crafting user-friendly and visually appealing digital products. I constantly strive to expand my knowledge and enthusiastically tackle new challenges from every project.
+                </p>
+                <div class="about-actions">
+                    <a href="your_resume.pdf" class="btn primary-btn" download>Download CV</a>
+                    <a href="#portfolio" class="btn secondary-btn">View Projects</a>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="C:\Users\invin\Downloads" alt="IMG_2018">
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="section-header">
+            <h2>Portfolio</h2>
+            <p>My Latest Works</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="project1-thumbnail.jpg" alt="Project 1">
+                <h3>Arithmetic Solver</h3>
+                <p>A web application for solving mathematical problems.</p>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="project2-thumbnail.jpg" alt="Project 2">
+                <h3>AutoChat-Discord</h3>
+                <p>A Discord bot for automated chat responses.</p>
+                <div class="project-links">
+                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="section-header">
+            <h2>Skills & Tech Stack</h2>
+            <p>Technologies I work with</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <img src="icons/html5.svg" alt="HTML5">
+                <span>HTML5</span>
+            </div>
+            <div class="skill-item">
+                <img src="icons/css3.svg" alt="CSS3">
+                <span>CSS3</span>
+            </div>
+            <div class="skill-item">
+                <img src="icons/javascript.svg" alt="JavaScript">
+                <span>JavaScript</span>
+            </div>
+            <div class="skill-item">
+                <img src="icons/react.svg" alt="React">
+                <span>React</span>
+            </div>
+            <div class="skill-item">
+                <img src="icons/nodejs.svg" alt="Node.js">
+                <span>Node.js</span>
+            </div>
+            <div class="skill-item">
+                <img src="icons/mongodb.svg" alt="MongoDB">
+                <span>MongoDB</span>
+            </div>
+            <div class="skill-item">
+                <img src="icons/firebase.svg" alt="Firebase">
+                <span>Firebase</span>
+            </div>
+            <div class="skill-item">
+                <img src="icons/git.svg" alt="Git">
+                <span>Git</span>
+            </div>
+            </div>
+    </section>
+
+    <section id="certificates" class="certificates-section">
+        <div class="section-header">
+            <h2>Certificates</h2>
+            <p>My achievements and certifications</p>
+        </div>
+        <div class="certificates-grid">
+            <div class="certificate-item">
+                <img src="certificate1.png" alt="Certificate 1">
+                <p>Web Development Fundamentals</p>
+            </div>
+            <div class="certificate-item">
+                <img src="certificate2.png" alt="Certificate 2">
+                <p>JavaScript Advanced</p>
+            </div>
+            </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <p>Send me a message, and I'll get back to you soon!</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-form-container">
+                <h3>Send Message</h3>
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Send Message</button>
+                </form>
+            </div>
+            <div class="connect-with-me">
+                <h3>Connect With Me</h3>
+                <p>Let's Connect</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/your_instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.linkedin.com/in/your_linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/your_github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.youtube.com/your_youtube" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                    <a href="https://www.tiktok.com/@your_tiktok" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Muhd. Sailijar. All Rights Reserved.</p>
+        <p>Made with ❤ by Muhd. Sailijar</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
