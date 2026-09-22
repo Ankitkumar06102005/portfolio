@@ -5,32 +5,23 @@
   --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-:root {
-  color-scheme: light;
-}
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: #111111; background-color: #FFFFFF; transition: background-color 300ms ease, color 300ms ease; }
 
-html {
-  scroll-behavior: smooth;
-}
+/* The existing component palette is intentionally preserved in light mode; these selectors provide a consistent dark-mode surface without changing the visual system. */
+html.dark body { color: #f5f5f5; background-color: #111111; }
+html.dark [class~="bg-white"], html.dark [class*="bg-[#FFFFFF]"], html.dark [class*="bg-white/"] { background-color: #171717 !important; }
+html.dark [class*="bg-[#F7F7F5]"], html.dark [class*="bg-[#F7F7F5]/"] { background-color: #222222 !important; }
+html.dark [class*="text-[#111111]"] { color: #f5f5f5 !important; }
+html.dark [class*="text-[#686868]"] { color: #a3a3a3 !important; }
+html.dark [class*="border-[#E8E8E8]"], html.dark [class*="border-[#D4D4D0]"] { border-color: #333333 !important; }
+html.dark [class*="hover:bg-[#F7F7F5]"]:hover { background-color: #2a2a2a !important; }
+html.dark ::selection { background: #245CFF; color: white; }
 
-body {
-  font-family: var(--font-sans);
-  color: #111111;
-  background-color: #FFFFFF;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 7px;
-}
-::-webkit-scrollbar-track {
-  background: #F7F7F5;
-}
-::-webkit-scrollbar-thumb {
-  background: #D4D4D0;
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #A8A8A2;
-}
-
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #F7F7F5; }
+::-webkit-scrollbar-thumb { background: #D4D4D0; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #A8A8A2; }
+html.dark ::-webkit-scrollbar-track { background: #171717; }
+html.dark ::-webkit-scrollbar-thumb { background: #444444; }
