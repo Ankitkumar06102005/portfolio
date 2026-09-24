@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AlertTriangle, CheckCircle2, LoaderCircle, RefreshCw, X } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, ExternalLink, LoaderCircle, RefreshCw, X } from 'lucide-react';
 
 interface DemoLoadingModalProps {
   url: string | null;
@@ -11,19 +11,25 @@ export function DemoLoadingModal({ url, title, onClose }: DemoLoadingModalProps)
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     if (!url) return;
     setLoaded(false);
     setFailed(false);
     setElapsed(0);
+    setAttempt(0);
   }, [url]);
 
   useEffect(() => {
     if (!url || loaded || failed) return;
-    const timer = window.setInterval(() => setElapsed((value) => Math.min(value + 1, 30)), 1000);
-    return () => window.clearInterval(timer);
-  }, [url, loaded, failed]);
+    const interval = window.setInterval(() => setElapsed((value) => Math.min(value + 1, 30)), 1000);
+    const timeout = window.setTimeout(() => setFailed(true), 45000);
+    return () => {
+      window.clearInterval(interval);
+      window.clearTimeout(timeout);
+    };
+  }, [url, loaded, failed, attempt]);
 
   if (!url) return null;
 
@@ -31,6 +37,7 @@ export function DemoLoadingModal({ url, title, onClose }: DemoLoadingModalProps)
     setLoaded(false);
     setFailed(false);
     setElapsed(0);
+    setAttempt((value) => value + 1);
   };
 
   return (
@@ -64,12 +71,15 @@ export function DemoLoadingModal({ url, title, onClose }: DemoLoadingModalProps)
           <div className="flex min-h-[360px] flex-col items-center justify-center px-6 py-12 text-center text-white">
             <AlertTriangle className="mb-5 h-12 w-12 text-amber-300" />
             <h2 className="text-2xl font-bold">The demo is taking longer than expected</h2>
-            <p className="mt-3 max-w-md text-sm text-white/65">The server did not respond. You can try again or close this window and return to the portfolio.</p>
-            <button type="button" onClick={retry} className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#245CFF] px-5 py-3 text-sm font-semibold transition hover:bg-[#3970ff]"><RefreshCw className="h-4 w-4" /> Try again</button>
+            <p className="mt-3 max-w-md text-sm text-white/65">The embedded page did not become ready within 45 seconds. Try again or open it directly in a new tab.</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <button type="button" onClick={retry} className="inline-flex items-center gap-2 rounded-xl bg-[#245CFF] px-5 py-3 text-sm font-semibold transition hover:bg-[#3970ff]"><RefreshCw className="h-4 w-4" /> Try again</button>
+              <a href={url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"><ExternalLink className="h-4 w-4" /> Open directly</a>
+            </div>
           </div>
         )}
 
-        <iframe title={`${title} live demo`} src={url} className={`h-[75vh] min-h-[360px] w-full border-0 bg-white ${loaded ? 'block' : 'absolute h-px w-px opacity-0'}`} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />
+        <iframe key={`${url}-${attempt}`} title={`${title} live demo`} src={url} className={`h-[75vh] min-h-[360px] w-full border-0 bg-white ${loaded ? 'block' : 'absolute h-px w-px opacity-0'}`} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />
         {loaded && <div className="pointer-events-none absolute left-4 top-4 rounded-full bg-emerald-500/90 px-3 py-1.5 text-xs font-semibold text-white"><CheckCircle2 className="mr-1 inline h-3.5 w-3.5" /> Demo ready</div>}
       </div>
     </div>
