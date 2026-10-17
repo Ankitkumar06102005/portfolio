@@ -80,7 +80,7 @@ export function ProjectVisualMockup({ project }: ProjectVisualMockupProps) {
           </span>
         </div>
 
-        {/* Live complaint intake stream */}
+        {/* Illustrative complaint workflow */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           {/* Multilingual Audio Intake */}
           <div className="bg-white p-3 rounded-lg border border-[#E8E8E8] space-y-2">
@@ -109,18 +109,18 @@ export function ProjectVisualMockup({ project }: ProjectVisualMockupProps) {
                 pgvector Deduplication
               </span>
               <span className="text-[9px] font-semibold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
-                0.942 Similarity
+                Example match
               </span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex-1 bg-[#F0F0EE] h-2 rounded-full overflow-hidden">
-                <div className="bg-[#245CFF] h-full rounded-full w-[94%]" />
+                <div className="bg-[#245CFF] h-full rounded-full w-[70%]" />
               </div>
-              <span className="text-[10px] text-[#111111] font-semibold">94.2%</span>
+              <span className="text-[10px] text-[#111111] font-semibold">Illustrative</span>
             </div>
             <div className="text-[10px] text-amber-700 bg-amber-50/80 p-1.5 rounded flex items-center gap-1">
               <AlertTriangle className="w-3 h-3 shrink-0" />
-              <span>Matched ticket #4192 (Ward 14 Roadway)</span>
+              <span>Possible duplicate · sample data</span>
             </div>
           </div>
         </div>
@@ -138,10 +138,10 @@ export function ProjectVisualMockup({ project }: ProjectVisualMockupProps) {
           </div>
           <div className="flex items-center gap-2">
             <span className="px-2 py-1 rounded bg-red-50 text-red-700 border border-red-200 text-[10px] font-semibold">
-              Severity: 8.5/10
+              Priority: Review
             </span>
             <span className="px-2 py-1 rounded bg-blue-50 text-[#245CFF] border border-blue-200 text-[10px] font-semibold flex items-center gap-1">
-              <span>Auto-Routed</span>
+              <span>Routing example</span>
               <ArrowRight className="w-3 h-3" />
             </span>
           </div>
