@@ -43,6 +43,9 @@ export function DemoLoadingModal({ url, title, onClose }: DemoLoadingModalProps)
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#08101dcc] p-4 backdrop-blur-md" role="dialog" aria-modal="true" aria-label={`Loading ${title} demo`}>
       <div className="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-[#101827] shadow-2xl">
+        <a href={url} target="_blank" rel="noopener noreferrer" className="absolute left-4 top-4 z-20 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-[#101827]/90 px-3 py-2 text-xs font-medium text-white/80 backdrop-blur transition hover:border-[#8eb5ff]/60 hover:text-white" aria-label={`Open ${title} directly in a new tab`}>
+          Open directly <ExternalLink className="h-3.5 w-3.5" />
+        </a>
         <button type="button" onClick={onClose} className="absolute right-4 top-4 z-20 rounded-full p-2 text-white/60 transition hover:bg-white/10 hover:text-white" aria-label="Close demo">
           <X className="h-5 w-5" />
         </button>
@@ -71,7 +74,7 @@ export function DemoLoadingModal({ url, title, onClose }: DemoLoadingModalProps)
           <div className="flex min-h-[360px] flex-col items-center justify-center px-6 py-12 text-center text-white">
             <AlertTriangle className="mb-5 h-12 w-12 text-amber-300" />
             <h2 className="text-2xl font-bold">The demo is taking longer than expected</h2>
-            <p className="mt-3 max-w-md text-sm text-white/65">The embedded page did not become ready within 45 seconds. Try again or open it directly in a new tab.</p>
+            <p className="mt-3 max-w-md text-sm text-white/65">The preview frame did not load within 45 seconds. You can retry the preview or open the app directly.</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <button type="button" onClick={retry} className="inline-flex items-center gap-2 rounded-xl bg-[#245CFF] px-5 py-3 text-sm font-semibold transition hover:bg-[#3970ff]"><RefreshCw className="h-4 w-4" /> Try again</button>
               <a href={url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"><ExternalLink className="h-4 w-4" /> Open directly</a>
@@ -80,7 +83,7 @@ export function DemoLoadingModal({ url, title, onClose }: DemoLoadingModalProps)
         )}
 
         <iframe key={`${url}-${attempt}`} title={`${title} live demo`} src={url} className={`h-[75vh] min-h-[360px] w-full border-0 bg-white ${loaded ? 'block' : 'absolute h-px w-px opacity-0'}`} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />
-        {loaded && <div className="pointer-events-none absolute left-4 top-4 rounded-full bg-emerald-500/90 px-3 py-1.5 text-xs font-semibold text-white"><CheckCircle2 className="mr-1 inline h-3.5 w-3.5" /> Demo ready</div>}
+        {loaded && <div className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-emerald-500/90 px-3 py-1.5 text-xs font-semibold text-white"><CheckCircle2 className="mr-1 inline h-3.5 w-3.5" /> Preview frame loaded</div>}
       </div>
     </div>
   );
