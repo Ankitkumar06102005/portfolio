@@ -9,7 +9,7 @@ export interface Project {
   shortDescription: string;
   highlights: string[];
   metrics?: { label: string; value: string };
-  visualType: 'junsono' | 'genie' | 'resumeiq' | 'legallens';
+  visualType: 'junsono' | 'genie' | 'contexta' | 'resumeiq' | 'legallens';
   deepDive: {
     overview: string;
     architectureNodes: { name: string; type: string; description: string }[];
