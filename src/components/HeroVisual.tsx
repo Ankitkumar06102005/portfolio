@@ -55,7 +55,7 @@ export function HeroVisual() {
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(container);
 
-    const labels = ['pgvector', 'MiniLM-L6', 'FastAPI', 'ChromaDB', 'RAG', 'Gemini 2.5', 'XGBoost', 'Embeddings', 'STT (Sarvam)', 'CosineSim', 'TF-IDF', 'Multi-Agent'];
+    const labels = ['document', 'query', 'embedding', 'retrieval', 'ranking', 'context', 'chunk', 'source', 'semantic', 'evidence', 'index', 'answer'];
     const nodes: Node[] = Array.from({ length: 28 }, (_, index) => {
       const isSpecial = index < labels.length;
       return {
@@ -170,7 +170,7 @@ export function HeroVisual() {
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full cursor-crosshair" />
         <div className="pointer-events-none absolute left-4 top-4 rounded-lg border border-[#E8E8E8] bg-white/95 px-3.5 py-2.5 shadow-xs backdrop-blur-md">
           <div className="flex items-center gap-2"><span className="h-2 w-2 animate-ping rounded-full bg-[#245CFF]" /><span className="text-[11px] font-mono font-medium uppercase tracking-wider text-[#686868]">Vector Field Simulation</span></div>
-          <p className="mt-0.5 text-xs font-mono font-semibold text-[#111111]">Cosine Similarity Engine</p>
+          <p className="mt-0.5 text-xs font-mono font-semibold text-[#111111]">Vector Retrieval Simulation</p>
         </div>
         <div className="pointer-events-none absolute right-4 top-4 flex items-center gap-2 rounded-lg border border-[#E8E8E8] bg-white/95 px-3 py-1.5 shadow-xs backdrop-blur-md">
           <span className="text-[10px] font-mono text-[#686868]">DIM:</span><span className="text-[11px] font-mono font-medium text-[#111111]">{activeEmbedding.dim}</span><span className="text-[#D4D4D0]">|</span><span className="text-[10px] font-mono text-[#686868]">SIM:</span><span className="text-[11px] font-mono font-semibold text-[#245CFF]">{activeEmbedding.sim.toFixed(3)}</span>
@@ -188,7 +188,7 @@ export function HeroVisual() {
 
       <div className="mt-6 rounded-xl border border-[#E8E8E8] bg-[#F7F7F5] p-5 text-center sm:p-6">
         <p className="mb-2 text-xs font-mono font-semibold uppercase tracking-widest text-[#245CFF]">Cosine Similarity Engine</p>
-        <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[#686868]">This interactive visualization shows how AI compares meaning. Each point represents an embedding, while cosine similarity measures how close two vectors are, helping search and recommendation systems find relevant results.</p>
+        <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[#686868]">Illustrative animation only — these points and connections are not live application telemetry or measured similarity scores. The scene demonstrates how vector-based systems can organize and compare representations.</p>
       </div>
     </>
   );

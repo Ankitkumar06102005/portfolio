@@ -7,7 +7,7 @@ import { DemoLoadingModal } from './DemoLoadingModal';
 interface ProjectCardProps { key?: string; project: Project; onOpenCaseStudy: (project: Project) => void; }
 
 const LIVE_DEMOS: Record<string, string> = {
-  'genie-ai': 'https://ankitkumar06102005.github.io/GenieAI/',
+  'contexta-ai': 'https://contextaai-iota.vercel.app/',
   'resume-iq': 'https://resumeiq-partner.streamlit.app/',
   'legal-lens': 'https://legallens-xi.vercel.app/',
 };
