@@ -16,7 +16,7 @@ export function HeroVisual() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showHint, setShowHint] = useState(true);
-  const [activeEmbedding, setActiveEmbedding] = useState({ dim: '384-dim (MiniLM)', sim: 0.942 });
+  const activeEmbedding = { dim: 'Illustrative vectors', sim: 'VISUAL ONLY' };
 
   useEffect(() => {
     const timeout = window.setTimeout(() => setShowHint(false), 6000);
@@ -148,13 +148,8 @@ export function HeroVisual() {
     };
 
     render();
-    const metricInterval = window.setInterval(() => {
-      const sims = [0.942, 0.961, 0.887, 0.923, 0.955];
-      setActiveEmbedding((previous) => ({ ...previous, sim: sims[Math.floor(Math.random() * sims.length)] }));
-    }, 3200);
-
     return () => {
-      cancelAnimationFrame(animationFrameId); clearInterval(metricInterval); resizeObserver.disconnect();
+      cancelAnimationFrame(animationFrameId); resizeObserver.disconnect();
       canvas.removeEventListener('mousemove', onMouseMove); canvas.removeEventListener('mouseleave', onMouseLeave);
     };
   }, []);
@@ -173,7 +168,7 @@ export function HeroVisual() {
           <p className="mt-0.5 text-xs font-mono font-semibold text-[#111111]">Vector Retrieval Simulation</p>
         </div>
         <div className="pointer-events-none absolute right-4 top-4 flex items-center gap-2 rounded-lg border border-[#E8E8E8] bg-white/95 px-3 py-1.5 shadow-xs backdrop-blur-md">
-          <span className="text-[10px] font-mono text-[#686868]">DIM:</span><span className="text-[11px] font-mono font-medium text-[#111111]">{activeEmbedding.dim}</span><span className="text-[#D4D4D0]">|</span><span className="text-[10px] font-mono text-[#686868]">SIM:</span><span className="text-[11px] font-mono font-semibold text-[#245CFF]">{activeEmbedding.sim.toFixed(3)}</span>
+          <span className="text-[10px] font-mono text-[#686868]">MODE:</span><span className="text-[11px] font-mono font-medium text-[#111111]">{activeEmbedding.dim}</span><span className="text-[#D4D4D0]">|</span><span className="text-[10px] font-mono text-[#686868]">METRICS:</span><span className="text-[11px] font-mono font-semibold text-[#245CFF]">{activeEmbedding.sim}</span>
         </div>
         <button type="button" onClick={() => setIsFullscreen((value) => !value)} className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-md border border-[#E8E8E8] bg-white/95 px-3 py-2 text-[11px] font-mono font-medium text-[#111111] shadow-xs backdrop-blur-md transition-colors hover:border-[#245CFF] hover:text-[#245CFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#245CFF]" aria-label={isFullscreen ? 'Exit fullscreen vector engine' : 'Open vector engine fullscreen'} title={isFullscreen ? 'Exit fullscreen (Esc)' : 'Open fullscreen'}>
           {isFullscreen ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}<span>{isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}</span>
