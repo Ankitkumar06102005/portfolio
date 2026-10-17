@@ -11,6 +11,7 @@ import {
   Database,
   Search,
   Sparkles,
+  ShieldCheck,
 } from 'lucide-react';
 import { Project } from '../types';
 
