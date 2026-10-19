@@ -10,12 +10,14 @@ const LIVE_DEMOS: Record<string, string> = {
   'junsono-app': 'https://junsuno-app.vercel.app/',
   'contexta-ai': 'https://contexta-ai-ipbi.onrender.com/',
   'resume-iq': 'https://resumeiq2.streamlit.app/',
+  'legal-lens': 'https://legallens-xi.vercel.app/',
 };
 
 const GITHUB_REPOS: Record<string, string> = {
   'junsono-app': 'https://github.com/Ankitkumar06102005/Junsuno-app',
   'contexta-ai': 'https://github.com/Ankitkumar06102005/contextaAI',
   'resume-iq': 'https://github.com/Ankitkumar06102005/ResumeIQ',
+  'legal-lens': 'https://github.com/Ankitkumar06102005/legallens',
 };
 
 export function ProjectCard({ project, onOpenCaseStudy }: ProjectCardProps) {
