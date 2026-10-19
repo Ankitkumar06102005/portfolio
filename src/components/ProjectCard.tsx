@@ -8,12 +8,13 @@ interface ProjectCardProps { key?: string; project: Project; onOpenCaseStudy: (p
 
 const LIVE_DEMOS: Record<string, string> = {
   'contexta-ai': 'https://contexta-ai-ipbi.onrender.com/',
-  'resume-iq': 'https://resumeiq-partner.streamlit.app/',
+  'resume-iq': 'https://resumeiq2.streamlit.app/',
   'legal-lens': 'https://legallens-xi.vercel.app/',
 };
 
 const GITHUB_REPOS: Record<string, string> = {
   'contexta-ai': 'https://github.com/Ankitkumar06102005/contextaAI',
+  'resume-iq': 'https://github.com/Ankitkumar06102005/ResumeIQ',
 };
 
 export function ProjectCard({ project, onOpenCaseStudy }: ProjectCardProps) {
