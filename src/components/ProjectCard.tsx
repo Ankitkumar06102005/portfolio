@@ -7,13 +7,18 @@ import { DemoLoadingModal } from './DemoLoadingModal';
 interface ProjectCardProps { key?: string; project: Project; onOpenCaseStudy: (project: Project) => void; }
 
 const LIVE_DEMOS: Record<string, string> = {
-  'contexta-ai': 'https://contextaai-iota.vercel.app/',
+  'contexta-ai': 'https://contexta-ai-ipbi.onrender.com/',
   'resume-iq': 'https://resumeiq-partner.streamlit.app/',
   'legal-lens': 'https://legallens-xi.vercel.app/',
 };
 
+const GITHUB_REPOS: Record<string, string> = {
+  'contexta-ai': 'https://github.com/Ankitkumar06102005/contextaAI',
+};
+
 export function ProjectCard({ project, onOpenCaseStudy }: ProjectCardProps) {
   const liveDemo = LIVE_DEMOS[project.id];
+  const githubRepo = GITHUB_REPOS[project.id];
   const [demoOpen, setDemoOpen] = useState(false);
 
   return <>
@@ -24,7 +29,7 @@ export function ProjectCard({ project, onOpenCaseStudy }: ProjectCardProps) {
         <div className="pt-1"><ProjectVisualMockup project={project} /></div>
         <div className="space-y-2 pt-2"><div className="text-[11px] font-mono uppercase tracking-wider text-[#686868] font-medium">Core Technical Highlights</div><ul className="space-y-2">{project.highlights.slice(0, 3).map((item, idx) => <li key={idx} className="flex items-start gap-2.5 text-xs text-[#111111]"><CheckCircle2 className="w-3.5 h-3.5 text-[#245CFF] shrink-0 mt-0.5" /><span className="leading-relaxed">{item}</span></li>)}</ul></div>
       </div>
-      <div className="p-6 sm:p-8 pt-0 mt-auto"><div className="pt-4 border-t border-[#E8E8E8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"><div className="flex flex-wrap gap-1.5 max-w-md">{project.tech.map((t, idx) => <span key={idx} className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F7F7F5] text-[#111111] border border-[#E8E8E8]">{t}</span>)}</div><div className="flex items-center gap-2 shrink-0">{liveDemo && <button type="button" onClick={() => setDemoOpen(true)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold border border-[#245CFF] text-[#245CFF] hover:bg-[#245CFF] hover:text-white transition-all" aria-label={`Open ${project.title} live demo`}>Live demo <ExternalLink className="w-3.5 h-3.5" /></button>}<button type="button" onClick={() => onOpenCaseStudy(project)} className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-[#111111] text-white hover:bg-[#245CFF] transition-all" id={`btn-case-study-${project.id}`}>View case study <ChevronRight className="w-3.5 h-3.5" /></button></div></div></div>
+      <div className="p-6 sm:p-8 pt-0 mt-auto"><div className="pt-4 border-t border-[#E8E8E8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"><div className="flex flex-wrap gap-1.5 max-w-md">{project.tech.map((t, idx) => <span key={idx} className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F7F7F5] text-[#111111] border border-[#E8E8E8]">{t}</span>)}</div><div className="flex items-center gap-2 shrink-0">{githubRepo && <a href={githubRepo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold border border-[#E8E8E8] text-[#111111] hover:border-[#245CFF] hover:text-[#245CFF] transition-all" aria-label={`View ${project.title} source code on GitHub`}>GitHub <ExternalLink className="w-3.5 h-3.5" /></a>}{liveDemo && <button type="button" onClick={() => setDemoOpen(true)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold border border-[#245CFF] text-[#245CFF] hover:bg-[#245CFF] hover:text-white transition-all" aria-label={`Open ${project.title} live demo`}>Live demo <ExternalLink className="w-3.5 h-3.5" /></button>}<button type="button" onClick={() => onOpenCaseStudy(project)} className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-[#111111] text-white hover:bg-[#245CFF] transition-all" id={`btn-case-study-${project.id}`}>View case study <ChevronRight className="w-3.5 h-3.5" /></button></div></div></div>
     </div>
     <DemoLoadingModal url={demoOpen ? liveDemo ?? null : null} title={project.title} onClose={() => setDemoOpen(false)} />
   </>;
