@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
@@ -6,15 +7,19 @@ import { ResearchSection } from './components/ResearchSection';
 import { SkillsSection } from './components/SkillsSection';
 import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
+import { WelcomeIntro } from './components/WelcomeIntro';
 
 type Theme = 'light' | 'dark';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('work');
+  const [showWelcome, setShowWelcome] = useState(true);
   const [theme, setTheme] = useState<Theme>(() => {
     const savedTheme = localStorage.getItem('portfolio-theme') as Theme | null;
     return savedTheme ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   });
+
+  const finishWelcome = useCallback(() => setShowWelcome(false), []);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -42,6 +47,9 @@ export default function App() {
 
   return (
     <div id="top" className="min-h-screen bg-white text-[#111111] flex flex-col font-sans selection:bg-[#245CFF] selection:text-white transition-colors duration-300">
+      <AnimatePresence>
+        {showWelcome && <WelcomeIntro onComplete={finishWelcome} />}
+      </AnimatePresence>
       <Navbar activeSection={activeSection} theme={theme} onToggleTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')} />
       <main id="main-content" className="flex-1">
         <Hero />
