@@ -37,7 +37,8 @@ export function WelcomeIntro({ onComplete }: WelcomeIntroProps) {
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const duration = reducedMotion ? 250 : 3400;
+    // Leave the finished welcome screen visible long enough to read before entering the portfolio.
+    const duration = reducedMotion ? 250 : 6500;
     const timeout = window.setTimeout(onComplete, duration);
     return () => window.clearTimeout(timeout);
   }, [onComplete, reducedMotion]);
@@ -92,7 +93,7 @@ export function WelcomeIntro({ onComplete }: WelcomeIntroProps) {
           <motion.span
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: reducedMotion ? 0 : 3.15, ease: 'linear' }}
+            transition={{ duration: reducedMotion ? 0 : 6.1, ease: 'linear' }}
           />
         </div>
         <span className="welcome-intro-loading">ENTERING<span> PORTFOLIO</span></span>
