@@ -25,3 +25,146 @@ html.dark ::selection { background: #245CFF; color: white; }
 ::-webkit-scrollbar-thumb:hover { background: #A8A8A2; }
 html.dark ::-webkit-scrollbar-track { background: #171717; }
 html.dark ::-webkit-scrollbar-thumb { background: #444444; }
+
+/* Full-screen rolling-letter welcome entrance */
+.welcome-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(22px, 4vw, 56px);
+  color: #f5f5f5;
+  background: #0b0b0d;
+  isolation: isolate;
+}
+.welcome-intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(70vw, 760px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(36, 92, 255, 0.16) 0%, rgba(36, 92, 255, 0.055) 36%, transparent 70%);
+  pointer-events: none;
+}
+.welcome-intro-grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.11;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+}
+.welcome-intro-top, .welcome-intro-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #85858d;
+}
+.welcome-intro-mark {
+  color: #f5f5f5;
+  font-family: var(--font-sans);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.08em;
+}
+.welcome-intro-mark span { color: #5680ff; }
+.welcome-intro-center {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 56px 0 72px;
+  align-self: center;
+}
+.welcome-intro-eyebrow {
+  margin: 0 0 clamp(22px, 4vh, 42px) 4px;
+  color: #92929b;
+  font: 10px/1.4 var(--font-mono);
+  letter-spacing: 0.22em;
+}
+.welcome-intro-welcome {
+  display: block;
+  color: #6e8fff;
+  font: 500 clamp(15px, 2vw, 22px)/1.3 var(--font-mono);
+  letter-spacing: 0.24em;
+  overflow: hidden;
+}
+.welcome-intro-name {
+  margin: 8px 0 0;
+  color: #f5f5f5;
+  font-size: clamp(42px, 10.5vw, 132px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.075em;
+  white-space: nowrap;
+}
+.welcome-rolling-line { display: inline-flex; }
+.welcome-letter-window {
+  display: inline-block;
+  overflow: hidden;
+  perspective: 500px;
+}
+.welcome-letter {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+.welcome-letter-space { width: 0.28em; }
+.welcome-intro-subtitle {
+  margin: clamp(24px, 4vh, 40px) 0 0 4px;
+  color: #92929b;
+  font: 10px/1.5 var(--font-mono);
+  letter-spacing: 0.19em;
+}
+.welcome-intro-progress {
+  width: min(28vw, 300px);
+  height: 1px;
+  overflow: hidden;
+  background: #303036;
+}
+.welcome-intro-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  background: #5680ff;
+}
+.welcome-intro-loading { color: #f5f5f5; }
+.welcome-intro-loading span { color: #85858d; }
+.welcome-intro-skip {
+  position: absolute;
+  right: clamp(22px, 4vw, 56px);
+  bottom: clamp(76px, 10vh, 108px);
+  border: 1px solid #34343b;
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: #b5b5bd;
+  background: rgba(18, 18, 21, 0.72);
+  font: 9px/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+.welcome-intro-skip:hover { color: #fff; border-color: #6e8fff; }
+.welcome-intro-skip span { margin-left: 8px; color: #6e8fff; }
+@media (max-width: 600px) {
+  .welcome-intro-name { font-size: clamp(38px, 11vw, 68px); }
+  .welcome-intro-top, .welcome-intro-bottom { font-size: 8px; letter-spacing: 0.1em; }
+  .welcome-intro-bottom { flex-wrap: wrap; }
+  .welcome-intro-progress { order: 3; width: 100%; }
+  .welcome-intro-skip { bottom: 92px; }
+  .welcome-intro-subtitle { font-size: 8px; letter-spacing: 0.12em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
